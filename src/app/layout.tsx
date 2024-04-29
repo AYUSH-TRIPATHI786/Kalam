@@ -5,10 +5,11 @@ import { cn } from '@/lib/utils';
 import Navbar from '@/components/Navbar';
 import Providers from '@/components/Providers';
 
-import "react-loading-skeleton/dist/skeleton.css"
-import "simplebar-react/dist/simplebar.min.css"
+import 'react-loading-skeleton/dist/skeleton.css';
+import 'simplebar-react/dist/simplebar.min.css';
 
 import { Toaster } from '@/components/ui/toaster';
+import { Suspense } from 'react';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -30,9 +31,9 @@ export default function RootLayout({
 						inter.className
 					)}
 				>
-					<Toaster/>
+					<Toaster />
 					<Navbar />
-					{children}
+					<Suspense>{children}</Suspense>
 				</body>
 			</Providers>
 		</html>
