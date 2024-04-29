@@ -5,6 +5,7 @@ import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-qu
 import { trpc } from '@/app/_trpc/client';
 import { TRPCClientError, httpBatchLink } from '@trpc/client';
 import { useRouter } from 'next/navigation';
+import { absoluteUrl } from '@/lib/utils';
 const Providers = ({ children }: PropsWithChildren) => {
 	const router = useRouter();
 	const [queryClient] = useState(new QueryClient({
@@ -22,7 +23,7 @@ const Providers = ({ children }: PropsWithChildren) => {
 		trpc.createClient({
 			links: [
 				httpBatchLink({
-					url: 'http://localhost:3000/api/trpc'
+					url: absoluteUrl('/api/trpc')
 				})
 			]
 		})
